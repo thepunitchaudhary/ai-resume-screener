@@ -1,13 +1,14 @@
+import logging
 from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
 from sqlalchemy.orm import Session
+
+logger = logging.getLogger("uvicorn.error")
 
 from app.database import get_db
 from app.models import ScreeningResult
 from app.schemas import ScreeningResultOut, ScreeningHistoryItem
 from app.services.pdf_parser import extract_text_from_pdf
 from app.services.ai_screener import screen_resume_against_job
-import logging
-logger = logging.getLogger("uvicorn.error")
 
 router = APIRouter(prefix="/api", tags=["screening"])
 

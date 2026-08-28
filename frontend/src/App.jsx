@@ -41,6 +41,7 @@ export default function App() {
   return (
     <div className="app-shell">
       <header>
+        <p className="eyebrow">Screening Desk / Automated Review</p>
         <h1>AI Resume Screener</h1>
         <p>Upload a resume and paste a job description to get an instant AI match score.</p>
       </header>

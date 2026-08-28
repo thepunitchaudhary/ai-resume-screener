@@ -1,13 +1,23 @@
 export default function ResultCard({ result }) {
-  const scoreColor =
-    result.match_score >= 80 ? "#2e7d32" : result.match_score >= 50 ? "#ed6c02" : "#c62828";
+  const ringColor =
+    result.match_score >= 80
+      ? "var(--seal-high)"
+      : result.match_score >= 50
+      ? "var(--seal-mid)"
+      : "var(--seal-low)";
 
   return (
     <div className="result-card">
       <div className="result-header">
         <h2>{result.candidate_name || "Candidate"}</h2>
-        <div className="score-badge" style={{ backgroundColor: scoreColor }}>
-          {result.match_score}/100
+        <div
+          className="score-ring"
+          style={{ "--pct": result.match_score, "--ring-color": ringColor }}
+        >
+          <div className="score-ring-inner">
+            <span className="num">{result.match_score}</span>
+            <span className="denom">/ 100</span>
+          </div>
         </div>
       </div>
 
